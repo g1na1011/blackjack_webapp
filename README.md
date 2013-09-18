@@ -1,0 +1,1 @@
+This repo consists of the files of my Blackjack game as a webapp using the Sinatra framework.
