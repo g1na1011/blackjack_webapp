@@ -1,0 +1,44 @@
+<h2>Welcome <%= session[:username] %>!</h2>
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span4">
+      <!--Sidebar content-->
+      You have a total of <%= total_hand(session[:player_cards]) %>.
+      <br/>
+      Dealer has a total of <%= total_hand(session[:dealer_cards]) %>. 
+      <br/><br/>
+      <% if @show_hit_stand_btn %>
+        What do you wish to do?
+        <br/><br/>
+        <form action="/game/player/hit" method="post">
+          <input type="submit" class="btn btn-success" value="Hit" name="hit" />
+        </form>
+        <form action="/game/player/stand" method="post">
+          <input type="submit" class="btn btn-warning" value="Stand" name="stand" />
+        </form>
+      <% elsif @show_dealer_hit_btn %>
+        <form action="/game/dealer/hit" method="post">
+          <input type="submit" class="btn btn-primary" value="Click to see dealer's next card." name="dealer_hit" />
+        </form>
+      <% end %>
+    </div>
+    <div class="span8">
+      <!--Body content-->
+      <%= session[:username] %>'s cards:
+      <br/>
+      <ul>
+        <% session[:player_cards].each do |card| %>
+          <li><%= card.to_s %></li>
+        <% end %>
+      </ul>
+      Dealer's cards:
+      <br/>
+      <ul>
+        <% session[:dealer_cards].each do |card| %>
+          <li><%= card.to_s %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
