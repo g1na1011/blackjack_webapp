@@ -4,14 +4,16 @@
     <title>Blackjack</title>
     <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/application.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="/application.js"></script>
   </head>
   <body style="padding-top: 50px;">
 
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-            <ul class="nav">
-              <li><a href="/">New Game</a></li>
+            <ul class="nav pull-left">
+              <li><a href="/"><i class="icon-home"> </i> Start Over</a></li>
             </ul>
         </div>
       </div>
@@ -23,9 +25,6 @@
     <% end %>
     <%if @success %>
       <div class="alert alert-success"><%= @success %></div>
-    <% end %>
-    <%if @instant_bj %>
-      <div class="alert alert-success"><%= @instant_bj %></div>
     <% end %>
       <%= yield %>
   </div>

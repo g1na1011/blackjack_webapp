@@ -1,11 +1,9 @@
-<h2>Welcome to Blackjack!</h2> 
-<br/>
-Before we begin, what is your name?
-<br/><br/>
-<form action="/game" method="post">
-  Name: 
+<body id="home">
+  <h2>Welcome to Blackjack!</h2> 
+  <p>Before we begin, what is your name?</p>
+  <form action="/new_player" method="post">
+  <input type="text" name="player_name" />
   <br/>
-  <input type="text" name="username" />
-  <br/>
-  <input type="submit" class="btn btn-primary" />
-</form>
+  <input type="submit" class="btn btn-primary" value="Submit"/>
+  </form>
+</body>
