@@ -76,8 +76,10 @@ helpers do
     @show_hit_stand_btn = false
     @play_again_btn = true
   end
-   
 
+  def is_numeric?(string)
+    true if Float(string) rescue false
+  end
 end
 
 before do
@@ -107,8 +109,10 @@ get "/bet" do
 end
 
 post "/bet" do
-  if params[:bet_amount].nil? || params[:bet_amount].to_i == 0
-    @error = "Must make a bet."
+  alphabet = "a".."z"
+
+  if params[:bet_amount].nil? || params[:bet_amount].to_i <= 0 || !is_numeric?(params[:bet_amount])
+    @error = "Please enter a valid bet."
     halt erb :bet
   elsif params[:bet_amount].to_i > session[:player_pot]
     @error = "Bet amount cannot be greater than what you have ($#{session[:player_pot]})."
